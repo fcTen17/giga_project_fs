@@ -166,7 +166,7 @@ class Feeds extends React.Component {
     return (
       
       <div className="feeds-wrapper container">
-        <button className="btn btn-light mb-4" onClick={requestRAMDOMUsersAndPost}>
+        <button className="btn btn-light mb-4" onClick={requestUsersAndPost}>
           get users
         </button>
         <div className="feeds-box  px-4">
