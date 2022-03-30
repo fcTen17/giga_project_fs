@@ -85,7 +85,7 @@ class Feeds extends React.Component {
 
   componentDidMount() {
 
-    requestUsersAndPost();
+    //requestUsersAndPost();
 
     fetch(`api/users`)
     .then(checkStatus)
