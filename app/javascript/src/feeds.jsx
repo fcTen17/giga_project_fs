@@ -51,6 +51,47 @@ const requestUsersAndPost = async () => {
   }  
 }
 
+const requestRAMDOMUsersAndPost = async () => {
+  const response = await fetch ('https://randomuser.me/api/?results=5');
+  const json = await response.json();
+  console.log(json)
+
+  const usersArr = await json.results;
+
+  for (let i = 0; i < usersArr.length; i++ ) {
+ 
+    let userNameTitle = usersArr[i]['name']['title'];
+    let userNameFirst = usersArr[i]['name']['first'];
+    let userNameLast = usersArr[i]['name']['last'];
+    let userGender = usersArr[i]['gender'];
+    let userEmail = usersArr[i]['email'];
+    let userImageLargeURL = usersArr[i]['picture']['large'];
+    let userImageMediumURL = usersArr[i]['picture']['medium'];
+    let userImageThumbnailURL = usersArr[i]['picture']['thumbnail'];
+    let postResponse = await fetch ('api/users', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      credentials: 'same-origin',
+      body: JSON.stringify({
+        user: {
+          name_title: userNameTitle,
+          name_first: userNameFirst,
+          name_last: userNameLast,
+          gender: userGender,
+          email: userEmail,
+          picture_large_url: userImageLargeURL,
+          picture_medium_url: userImageMediumURL,
+          picture_thumbnail_url: userImageThumbnailURL,
+        }
+      })
+    });
+    const postJson = await postResponse.json();
+    console.log(postJson);
+  }  
+}
+
 class Feeds extends React.Component {
   
   constructor(props) {
@@ -64,6 +105,8 @@ class Feeds extends React.Component {
     this.userCardRenderDatabase = this.userCardRenderDatabase.bind(this);
     this.loadMore = this.loadMore.bind(this);
   }
+
+
   
   userCardRenderDatabase = (usersArr) => {
     //let usersArr = usersObj.users;
@@ -121,7 +164,11 @@ class Feeds extends React.Component {
 
   render () {
     return (
+      
       <div className="feeds-wrapper container">
+        <button className="btn btn-light mb-4" onClick={requestRAMDOMUsersAndPost}>
+          get users
+        </button>
         <div className="feeds-box  px-4">
           <div className="row gx-5">           
             {(() => {
