@@ -18,7 +18,7 @@ const requestUsersAndPost = async () => {
   const usersArr = await json.results;
 
   for (let i = 0; i < usersArr.length; i++ ) {
-    let userIndexId = usersArr[i].id;
+ 
     let userNameTitle = usersArr[i]['name']['title'];
     let userNameFirst = usersArr[i]['name']['first'];
     let userNameLast = usersArr[i]['name']['last'];
