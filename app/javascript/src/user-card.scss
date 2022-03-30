@@ -1,0 +1,43 @@
+.user-card {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    display: flex;
+    border-radius: 8px;
+    transition: box-shadow .8s;
+    box-shadow: 0 8px 15px -2px black;
+}
+
+.user-card:hover {
+    box-shadow: 0 30px 24px -12px black;
+}
+
+.image-box {
+    min-width: 80px;
+    background-color: aqua;
+    overflow:hidden;
+    border-radius: 50%;
+}
+
+.user-name-email-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.user-name > p {
+    color:navy;
+    font-weight: 600;
+}
+
+.user-email > a > p {
+    font-size: small;
+    color:gray;
+    text-decoration: none;
+    transition: color .8s;
+}
+
+.user-email > a > p:hover {
+    color:firebrick;
+}
+
+
+ 

@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Layout from './layout';
+import Feeds from './feeds';
 import './home.scss';
 
 const Home = () => (
     <Layout>
-       <h1>HELLOQ!!!!</h1>
+       <Feeds />     
     </Layout>
 )
 
