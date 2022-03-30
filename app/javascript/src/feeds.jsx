@@ -109,7 +109,7 @@ class Feeds extends React.Component {
 
   
   userCardRenderDatabase = (usersArr) => {
-    //let usersArr = usersObj.users;
+
     console.log(usersArr);
     let listArr =[];
       
@@ -127,8 +127,6 @@ class Feeds extends React.Component {
   }
 
   componentDidMount() {
-
-    //requestUsersAndPost();
 
     fetch(`api/users`)
     .then(checkStatus)
@@ -166,9 +164,6 @@ class Feeds extends React.Component {
     return (
       
       <div className="feeds-wrapper container">
-        <button className="btn btn-light mb-4" onClick={requestUsersAndPost}>
-          get users
-        </button>
         <div className="feeds-box  px-4">
           <div className="row gx-5">           
             {(() => {
@@ -223,7 +218,9 @@ export default Feeds;
               </div>
   }
 
-
+  <button className="btn btn-light mb-4" onClick={requestUsersAndPost}>
+          get users
+  </button>
 
 
 */
