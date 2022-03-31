@@ -4,6 +4,9 @@ class User < ApplicationRecord
     has_one_attached :image
     before_save :grab_image
 
+    
+
+
     def add_imageURL(imageURL) 
         self.picture_large_url = imageURL
     end

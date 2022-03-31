@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'static_pages/home'
 
+  get 'search', to: "api/users#search"
   namespace :api do
     resources :users, only:[:index, :create]
   end

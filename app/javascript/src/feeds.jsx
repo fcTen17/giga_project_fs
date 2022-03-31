@@ -1,6 +1,7 @@
 import React from 'react';
 import './feeds.scss';
 import UserCard from './user-card';
+import $ from 'jquery'
 import { json, checkStatus , readURL } from './utils';
 
 const handleErrors = (response) => {
@@ -104,9 +105,26 @@ class Feeds extends React.Component {
     };
     this.userCardRenderDatabase = this.userCardRenderDatabase.bind(this);
     this.loadMore = this.loadMore.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-
+  handleSubmit = (e) => {
+    e.preventDefault(); 
+    let searchTerms = $('#search-field').val();
+    fetch(`search?q=${searchTerms}`)
+    .then(checkStatus)
+    .then(json)      
+    .then((data) => {
+      if (data) {         
+        this.setState({ userDatabase: data.users})
+        console.log(data)     
+      }
+    })
+    .catch((error) => {
+      this.setState({ error: error.message });
+      console.log(error); 
+    });
+  }
   
   userCardRenderDatabase = (usersArr) => {
 
@@ -164,6 +182,10 @@ class Feeds extends React.Component {
     return (
       
       <div className="feeds-wrapper container">
+        <form className="form-box p-5" action="/search">
+          <input type="text" placeholder="Search.." name="q" id="search-field"></input>
+          <button type="submit" onClick={this.handleSubmit}><i className="fa fa-search"></i></button>
+        </form>
         <div className="feeds-box  px-4">
           <div className="row gx-5">           
             {(() => {

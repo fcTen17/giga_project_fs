@@ -2,3 +2,16 @@
     max-width: 800px;
     margin: auto;
 }
+
+.form-box {    
+    display: flex;
+    justify-content:center;
+}
+
+.form-box > input {
+    border-radius: 8px;
+}
+
+.form-box > button {
+    border-radius: 20px;
+}
